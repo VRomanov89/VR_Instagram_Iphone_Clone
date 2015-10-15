@@ -15,6 +15,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /*
         let product = PFObject(className: "Products")
         product["name"] = "Sandwich"
@@ -29,16 +38,19 @@ class ViewController: UIViewController {
             }
         } */
         let query = PFQuery(className: "Products")
-        query.getObjectInBackgroundWithId("q7qEqM5Pd4", block: {(object, error) -> Void in
+        query.getObjectInBackgroundWithId("q7qEqM5Pd4", block: {(object: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print("error")
-            }else {
-                print(object!.objectForKey("description"))
+            }else if let product = object {
+                product["description"] = "Rocky Road"
+                product["price"] = 7.48
+                product.saveInBackground()
+                //print(object!.objectForKey("description"))
                 
                 
             }
         })
-        
+    
         
         
     }
