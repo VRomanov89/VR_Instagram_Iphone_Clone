@@ -28,7 +28,7 @@ class ViewController: UIViewController {
                 print("fail")
             }
         } */
-        var query = PFQuery(className: "Products")
+        let query = PFQuery(className: "Products")
         query.getObjectInBackgroundWithId("q7qEqM5Pd4", block: {(object, error) -> Void in
             if error != nil {
                 print("error")
