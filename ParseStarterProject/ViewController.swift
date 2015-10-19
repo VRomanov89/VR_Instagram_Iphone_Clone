@@ -28,7 +28,7 @@ class ViewController: UIViewController{
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    @available(iOS 8.0, *)
+    @available(iOS 8.0, *) // Required to use for old iOS
     @IBAction func signUp(sender: AnyObject) {
         if username.text == "" || password.text == "" {
             displayAlert("Error in form", message: "Please enter a username and password")
@@ -41,7 +41,7 @@ class ViewController: UIViewController{
             activityIndicator.startAnimating()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
             
-            var errorMessage = "Please try again later"
+            var errorMessage = "Please try again later" // Placeholder error message
             if signupActive == true {
             // Create a new user
                 let user = PFUser()
