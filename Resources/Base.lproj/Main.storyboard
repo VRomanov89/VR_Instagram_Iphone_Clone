@@ -119,11 +119,57 @@
                         <outlet property="registeredText" destination="2Eh-B8-YTH" id="iko-Nz-L4E"/>
                         <outlet property="secondaryButton" destination="abD-5K-dRP" id="6v7-aU-87L"/>
                         <outlet property="username" destination="zEE-UY-a4V" id="ATp-eg-qae"/>
+                        <segue destination="wDO-L7-FCr" kind="show" identifier="login" id="Lzh-OT-l5x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324.5" y="340.5"/>
+            <point key="canvasLocation" x="326.5" y="306.5"/>
+        </scene>
+        <!--User List-->
+        <scene sceneID="R1b-vl-JYe">
+            <objects>
+                <tableViewController title="User List" id="wtB-Ew-ZSb" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oel-Rw-W2w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ztb-MG-AbR">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ztb-MG-AbR" id="gEL-Y4-VY4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wtB-Ew-ZSb" id="Xjh-wU-9Pc"/>
+                            <outlet property="delegate" destination="wtB-Ew-ZSb" id="9jx-d6-o84"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="User List" id="Pco-O0-vkb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HjS-pU-afZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257.5" y="306.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dp2-V9-2a2">
+            <objects>
+                <navigationController id="wDO-L7-FCr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TgJ-kB-nHk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wtB-Ew-ZSb" kind="relationship" relationship="rootViewController" id="5RP-3n-nLX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUJ-sI-ZTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807.5" y="306.5"/>
         </scene>
     </scenes>
 </document>
