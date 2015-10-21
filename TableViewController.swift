@@ -17,21 +17,24 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var query = PFUser.query()
+        let query = PFUser.query()
         query?.findObjectsInBackgroundWithBlock({(objects, error) -> Void in
             if let users = objects {
                 self.usernames.removeAll(keepCapacity: true)
                 self.userids.removeAll(keepCapacity: true)
                 for object in users {
                     if let user = object as? PFUser {
-                        self.usernames.append(user.username!)
-                        self.userids.append(user.objectId!)
+                        if user.objectId! != PFUser.currentUser()?.objectId{
+                            self.usernames.append(user.username!)
+                            self.userids.append(user.objectId!)
+                        }
                         
                     }
                 }
             }
             print(self.usernames)
             print(self.userids)
+            self.tableView.reloadData()
         })
     }
 
@@ -49,7 +52,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return usernames.count
     }
 
     
@@ -57,7 +60,7 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
         // Configure the cell...
-        cell.textLabel!.text = "Test"
+        cell.textLabel!.text = usernames[indexPath.row]
         return cell
     }
     
