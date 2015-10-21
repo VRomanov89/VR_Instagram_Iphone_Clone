@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import Parse
 
 class TableViewController: UITableViewController {
+    
+    var usernames = [""]
+    var userids = [""]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        var query = PFUser.query()
+        query?.findObjectsInBackgroundWithBlock({(objects, error) -> Void in
+            if let users = objects {
+                self.usernames.removeAll(keepCapacity: true)
+                self.userids.removeAll(keepCapacity: true)
+                for object in users {
+                    if let user = object as? PFUser {
+                        self.usernames.append(user.username!)
+                        self.userids.append(user.objectId!)
+                        
+                    }
+                }
+            }
+            print(self.usernames)
+            print(self.userids)
+        })
     }
 
     override func didReceiveMemoryWarning() {
